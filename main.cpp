@@ -283,7 +283,7 @@ int main() {
 
                 case 0: {
                     std::cout << "\n=== Comanda finala ===\n";
-                    std::cout << comandaCurenta;
+                    comandaCurenta.afiseazaComanda();
                     afiseazaTotalFinal(comandaCurenta, *strategieReducere);
                     std::cout << "Multumim pentru comanda!\n";
                     ruleaza = false;
