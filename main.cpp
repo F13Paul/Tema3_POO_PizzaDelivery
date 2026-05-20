@@ -21,9 +21,13 @@ void curataBuffer() {
 int citesteOptiune() {
     int optiune;
     std::cout << "Alege optiunea: ";
-    std::cin >> optiune;
 
-    if (std::cin.fail()) {
+    // pt github, nu poate verifica
+    if (!(std::cin >> optiune)) {
+        if (std::cin.eof()) {
+            return 0;
+        }
+
         curataBuffer();
         return -1;
     }
