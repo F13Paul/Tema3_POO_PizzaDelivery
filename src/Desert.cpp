@@ -5,10 +5,8 @@
 Desert::Desert() : Produs("Desert Generic", 15.0f), kcal(250) {}
 
 // constructor cu parametri
-Desert::Desert(const std::string& nume, float pret, int kcal) 
-    : Produs(nume, pret) {
-    setKcal(kcal); // apelam setterul ca sa trecem prin validare
-}
+Desert::Desert(const std::string& nume, float pret, int kcal)
+    : Produs(nume, pret), kcal(valideazaKcal(kcal)) {}
 
 // constructor de copiere
 Desert::Desert(const Desert& altul) : Produs(altul), kcal(altul.kcal) {}
@@ -25,12 +23,13 @@ Desert& Desert::operator=(const Desert& altul) {
     return *this;
 }
 
-// setter cu aruncare de exceptie custom
-void Desert::setKcal(int k) {
-    if (k < 0) {
+// setterul a devenit functie statica cu aruncare de exceptie custom
+int Desert::valideazaKcal(int kcal) {
+    if (kcal < 0) {
         throw CaloriiInvalideException("Eroare: Numarul de calorii nu poate fi negativ!");
     }
-    this->kcal = k;
+
+    return kcal;
 }
 
 Produs* Desert::clone() const {
@@ -61,7 +60,7 @@ std::istream& operator>>(std::istream& in, Desert& d) {
     in >> caloriiIntroduse;
     
     // folosim setter-ul pentru a declansa exceptia daca e cazul
-    d.setKcal(caloriiIntroduse);
+    d.kcal = Desert::valideazaKcal(caloriiIntroduse);
     
     return in;
 }

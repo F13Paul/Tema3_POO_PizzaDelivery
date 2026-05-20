@@ -6,6 +6,7 @@
 class Desert : public Produs {
 private:
     int kcal;
+    static int valideazaKcal(int kcal);
 
 public:
     // constructori
@@ -18,10 +19,6 @@ public:
 
     // operator de atribuire
     Desert& operator=(const Desert& altul);
-
-    // getteri / setteri
-    int getKcal() const { return kcal; }
-    void setKcal(int kcal); // aici vom arunca exceptia
 
     // suprascrierea metodelor virtuale
     float calculeazaPret() const override;

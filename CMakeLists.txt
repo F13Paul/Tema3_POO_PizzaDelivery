@@ -59,6 +59,8 @@ target_sources(${MAIN_EXECUTABLE_NAME}
         src/Bautura.cpp
         src/Desert.cpp
         src/Comanda.cpp
+        src/ProdusFactory.cpp
+        src/StrategieReducere.cpp
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )

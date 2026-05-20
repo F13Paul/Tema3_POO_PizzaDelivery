@@ -6,6 +6,7 @@
 class Bautura : public Produs {
 private:
     int volumMl;
+    static int valideazaVolum(int volum);
 
 public:
     // constructori
@@ -18,10 +19,6 @@ public:
 
     // operator de atribuire
     Bautura& operator=(const Bautura& alta);
-
-    // getteri / setteri 
-    int getVolumMl() const { return volumMl; }
-    void setVolumMl(int volum);
 
     // suprascrierea metodelor virtuale
     float calculeazaPret() const override;

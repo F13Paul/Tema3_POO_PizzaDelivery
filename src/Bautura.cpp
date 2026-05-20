@@ -6,9 +6,7 @@ Bautura::Bautura() : Produs("Bautura Generica", 5.0f), volumMl(330) {}
 
 // constructor cu parametri
 Bautura::Bautura(const std::string& nume, float pret, int volumMl)
-    : Produs(nume, pret), volumMl(330) {
-    setVolumMl(volumMl);
-}
+    : Produs(nume, pret), volumMl(valideazaVolum(volumMl)) {}
 
 // constructor de copiere
 Bautura::Bautura(const Bautura& alta) : Produs(alta), volumMl(alta.volumMl) {}
@@ -26,12 +24,12 @@ Bautura& Bautura::operator=(const Bautura& alta) {
 }
 
 // setter cu validare minima
-void Bautura::setVolumMl(int volum) {
+int Bautura::valideazaVolum(int volum) {
     if (volum <= 0) {
         throw VolumInvalidException("Volumul bauturii trebuie sa fie pozitiv.");
     }
 
-    this->volumMl = volum;
+    return volum;
 }
 
 Produs* Bautura::clone() const {
@@ -61,7 +59,7 @@ std::istream& operator>>(std::istream& in, Bautura& b) {
     std::cout << "Introduceti volumul (ml): ";
     in >> volum;
 
-    b.setVolumMl(volum);
+    b.volumMl = Bautura::valideazaVolum(volum);
 
     return in;
 }

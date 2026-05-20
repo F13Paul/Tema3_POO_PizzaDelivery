@@ -10,6 +10,7 @@ protected:
     std::string nume;
     float pretDeBaza;
     static int contorId; // membru static pentru generarea ID-urilor unice
+    static float valideazaPret(float pret);
 
 public:
     // constructori
@@ -22,11 +23,6 @@ public:
 
     // operator atribuire
     Produs& operator=(const Produs& altul);
-
-    // getteri și setteri
-    int getId() const { return id; }
-    const std::string& getNume() const { return nume; }
-    void setPretDeBaza(float pret); // aici vom avea exceptia daca pretul e invalid
 
     // metode polimorfice (virtuale)
     virtual float calculeazaPret() const = 0; // metoda pur virtuala -> clasa devine abstracta

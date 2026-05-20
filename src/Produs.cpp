@@ -9,9 +9,7 @@ Produs::Produs() : id(contorId++), nume("Produs Necunoscut"), pretDeBaza(0.0f) {
 
 // constructor cu parametri
 Produs::Produs(const std::string& nume, float pret)
-    : id(contorId++), nume(nume), pretDeBaza(0.0f) {
-    setPretDeBaza(pret);
-}
+    : id(contorId++), nume(nume), pretDeBaza(valideazaPret(pret)) {}
 
 // constructor de copiere
 Produs::Produs(const Produs& altul) : id(contorId++), nume(altul.nume), pretDeBaza(altul.pretDeBaza) {}
@@ -28,12 +26,11 @@ Produs& Produs::operator=(const Produs& altul) {
     return *this;
 }
 
-void Produs::setPretDeBaza(float pret) {
+float Produs::valideazaPret(float pret) {
     if (pret < 0) {
         throw PretInvalidException("Pretul de baza nu poate fi negativ.");
     }
-
-    this->pretDeBaza = pret;
+    return pret;
 }
 
 void Produs::print(std::ostream& out) const {
@@ -57,7 +54,7 @@ std::istream& operator>>(std::istream& in, Produs& p) {
     std::cout << "Introduceti pret de baza: ";
     in >> pret;
 
-    p.setPretDeBaza(pret);
+    p.pretDeBaza = Produs::valideazaPret(pret);
 
     return in;
 }
