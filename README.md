@@ -75,18 +75,14 @@ Alegerea optiunii 0 finalizeaza comanda. Programul afiseaza bonul. Pe acesta vom
 Aplicatia simuleaza un sistem simplu, dar functional, de comanda pentru un restaurant de tip Pizza Delivery. 
 Consider ca prin realizarea acestui proiect am reusit sa consolidez cunostinte de baza legate de programarea orientata pe obiecte si sa imi formez o baza solida de la care sa plec pentru proiectele viitoare.
 
+```text
 Bibliografie:
-
 Cursuri POO 
-
 Seminarii POO
-
 Laboratoare POO
-
 Github Mariu Micluta
-
-
+```
+```text
 Student care a realizat lucrarea : Frincu Paul-Octavian
-
 Prof. coordonator: Camelia Obreja
-
+```
